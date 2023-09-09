@@ -1,12 +1,21 @@
 {
+  "name": "Scheduler Extension",
+  "description": "Chrome Extension",
   "manifest_version": 3,
-  "name": "Cookie scheduler",
   "version": "0.1.0",
-  "chrome_url_overrides": {
-    "newtab": "index.html"
+  "action": {
+    "default_popup": "popup.html"
   },
   "background": {
-    "service_worker": "service-worker.js"
+    "service_worker": "background.js"
   },
-  "action": {}
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  }
 }
